@@ -1,0 +1,18 @@
+Subject: Version Control Systems (CSE25303)
+Lecture 01: Core Architecture of Git & Remote Repositories
+Instructor: Course Faculty
+Student: Divjot Singh (2581211)
+
+Key Concepts:
+1. Three-Tree Architecture:
+   - Working Directory: Untracked and tracked local files on filesystem.
+   - Staging Area (Index): Cache holding files prepared for the next commit.
+   - Git Repository (.git/): Object database storing blobs, trees, and commit objects.
+
+2. Commit Graph & Cryptographic Hashing:
+   - Every commit produces an immutable SHA hash representing content snapshot and metadata.
+   - DAG (Directed Acyclic Graph) representation of project history.
+
+3. Remote Tracking & Collaboration:
+   - Origin represents the upstream authoritative repository.
+   - Upstream tracking (-u flag) maps local branches to remote branches (e.g. main -> origin/main).
