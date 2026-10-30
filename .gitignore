@@ -13,3 +13,12 @@ ENV/
 # Operating System Files
 .DS_Store
 Thumbs.db
+
+# Log and diagnostic files
+*.log
+logs/
+
+# Backup and swap files
+*.bak
+*.swp
+*.tmp
