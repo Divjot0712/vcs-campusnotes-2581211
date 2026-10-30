@@ -50,3 +50,12 @@ if __name__ == "__main__":
             except Exception:
                 continue
         return results
+
+    def safe_read(self, filename):
+        """Safely read note content with graceful error fallback."""
+        try:
+            return self.read_note(filename)
+        except FileNotFoundError:
+            return "[Error: Note file not found]"
+        except UnicodeDecodeError:
+            return "[Error: File decoding failed]"
