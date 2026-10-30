@@ -38,3 +38,15 @@ if __name__ == "__main__":
     app = CampusNotes()
     print("CampusNotes System Initialized.")
     print("Available Notes:", app.list_notes())
+
+    def get_notes_by_tag(self, tag):
+        """Filter notes containing a specific hashtag/tag keyword."""
+        results = []
+        for name in self.list_notes():
+            try:
+                content = self.read_note(name)
+                if tag.lower() in content.lower():
+                    results.append(name)
+            except Exception:
+                continue
+        return results
