@@ -1,0 +1,14 @@
+Subject: Version Control Systems (CSE25303)
+Lecture 02: Branching Strategies and Merge Workflows
+Instructor: Course Faculty
+Student: Divjot Singh (2581211)
+
+Key Concepts:
+1. Git Branching Model:
+   - Branches are lightweight movable pointers to commits.
+   - Fast-forward merge occurs when target branch is directly upstream.
+   - True 3-way merge creates a merge commit with two parents.
+
+2. Synchronization from Multiple Workstations:
+   - Cloning into secondary directory simulates multi-developer workflow.
+   - Local commits pushed to origin/main can be fetched and integrated via git pull.
