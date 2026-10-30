@@ -59,3 +59,8 @@ if __name__ == "__main__":
             return "[Error: Note file not found]"
         except UnicodeDecodeError:
             return "[Error: File decoding failed]"
+
+    def get_storage_path(self, filename=None):
+        """Unified path resolver for storage directory and files."""
+        base = os.path.abspath(self.storage_dir)
+        return os.path.join(base, filename) if filename else base
