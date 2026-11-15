@@ -28,13 +28,15 @@ class CampusNotes:
             return f.read()
 
     def validate_note_input(self, filename: str, content: str) -> bool:
-        """Validate note filename format and content constraints."""
+        """Validate note filename format, security, and content constraints."""
         if not filename or not isinstance(filename, str):
             raise ValueError("Filename must be a non-empty string.")
-        if not filename.endswith((".txt", ".md")):
-            raise ValueError("Filename must end with .txt or .md extension.")
-        if not isinstance(content, str):
-            raise ValueError("Note content must be a string.")
+        if "/" in filename or "\\" in filename or ".." in filename:
+            raise ValueError("Filename cannot contain path separators or directory traversal elements.")
+        if not filename.lower().endswith((".txt", ".md")):
+            raise ValueError("Filename must end with a .txt or .md extension.")
+        if not isinstance(content, str) or not content.strip():
+            raise ValueError("Note content must be a non-empty, non-whitespace string.")
         return True
 
     def add_note(self, filename, content):
