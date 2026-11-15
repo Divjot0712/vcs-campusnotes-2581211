@@ -27,8 +27,21 @@ class CampusNotes:
         with open(filepath, "r", encoding="utf-8") as f:
             return f.read()
 
+    def validate_note_input(self, filename: str, content: str) -> bool:
+        """Validate note filename format, security, and content constraints."""
+        if not filename or not isinstance(filename, str):
+            raise ValueError("Filename must be a non-empty string.")
+        if "/" in filename or "\\" in filename or ".." in filename:
+            raise ValueError("Filename cannot contain path separators or directory traversal elements.")
+        if not filename.lower().endswith((".txt", ".md")):
+            raise ValueError("Filename must end with a .txt or .md extension.")
+        if not isinstance(content, str) or not content.strip():
+            raise ValueError("Note content must be a non-empty, non-whitespace string.")
+        return True
+
     def add_note(self, filename, content):
-        """Add or update an academic note file."""
+        """Add or update an academic note file with input validation."""
+        self.validate_note_input(filename, content)
         filepath = os.path.join(self.storage_dir, filename)
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(content)
